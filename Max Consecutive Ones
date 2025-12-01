@@ -1,0 +1,75 @@
+Max Consecutive Ones
+Companies: Google, Amazon, Microsoft
+Given a Binary array A of N length, write a program to find the maximum number of consecutive 1s in A.
+Input:
+First line contains a single integer N.
+Second line contains N space separated integers of A.
+
+Output:
+Print a single integer representing the maximum consecutive 1s in A.
+
+Constraints
+1 <= N <= 3 * 10^5 0 <= A[i] <= 1
+
+Sample Input 1
+5
+1 1 0 1 1
+Sample Output 1
+2
+
+Sample Input 1
+3
+1 1 0
+Sample Output 1
+2
+
+Approach
+We inspect the list once from left to right and keep track of:
+-> count → current number of consecutive 1’s
+-> maxi → the maximum number of consecutive 1’s seen so far
+
+* Whenever we see a 1, we increase the current streak (count).
+* Whenever we see a 0, the current streak breaks → so we update maxi and reset count to zero.
+
+At the end, we return the maximum streak we ever saw.
+
+Python:
+def max_consecutive(nums):
+    count = maxi = 0 # current streak of 1s, longest streak found
+    for i in nums:
+        if i == 1:
+            count += 1 # Increase the current streak
+        else: # i == 0
+            maxi = max(maxi, count) # update the maximum
+            count = 0 # restart the streak
+    return max(maxi, count) # maximum of sequences
+
+
+n = int(input()) # number of arrays
+nums = [int(i) for i in input().split()][:n] # array with spaces
+print(max_consecutive(nums)) # print the function
+
+Java 11:
+import java.util.*;
+class Main {
+    public static void main(String[] args) { 
+        Scanner ip = new Scanner(System.in);
+        int n = ip.nextInt();
+        int[] arr = new int[n];
+        for(int i=0;i<n;i++){
+            arr[i] = ip.nextInt();
+        }
+        int count = 0, maxi = 0;
+        for(int i: arr){
+            if(i==1){
+                count += 1;
+            }
+            else{
+                maxi = Math.max(maxi, count);
+                count = 0;
+            }
+        }
+        maxi = Math.max(maxi, count);
+        System.out.println(maxi);
+    }
+}
