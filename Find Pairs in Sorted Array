@@ -1,6 +1,6 @@
-Find Pairs in Sorted Array
-Easy
-Companies: 
+Find Pairs in Sorted Array (Easy)
+
+Companies: Amazon, Apple, Bloomberg, ByteDance, Expedia, Facebook, Goldman Sachs, Google, Intuit, Microsoft, Paypal, Pure Storage
 
 Given an array A of N unique integers and a target integer K, A is sorted in increasing order, write an efficient program to find pairs whose sum is equal to Κ.
 Note: There is at most one such pair in A.
